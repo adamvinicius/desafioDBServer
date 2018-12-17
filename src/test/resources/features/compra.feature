@@ -9,7 +9,7 @@ Funcionalidade: compra automationpractice
 		E clico em Proceed to checkout produto
 		Entao valido se o produto "Faded Short Sleeve T-shirts" se encontra no carrinho
 		Quando clico em Proceed to checkout
-		E digito "adamteste6@gmail.com" no campo email
+		E digito "testeadam@gmail.com" no campo email
 		E clico em Create an account
 		Dado que estou na pagina Sign in
 	
