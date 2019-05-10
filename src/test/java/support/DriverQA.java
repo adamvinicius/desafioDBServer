@@ -11,18 +11,24 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class DriverQA {
+	
+	private static ChromeOptions options;
+	
 	private static WebDriver driver;
 	
     public static void start(String endereco){
-    	
+    	options = new ChromeOptions();
+    	options.addArguments("--headless");
+		options.addArguments("window-size=1200x800");
     	System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-    	driver = new ChromeDriver();
+    	driver = new ChromeDriver(options);
     	
     	driver.get(endereco);
     	driver.manage().window().maximize();
