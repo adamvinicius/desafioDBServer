@@ -12,7 +12,8 @@ import org.junit.runner.RunWith;
 		
 		
 		
-		"src/test/resources/features/compra.feature"
+		"src/test/resources/features/compra.feature",
+		"src/test/resources/features/trelloApi.feature"
 		
 		
 }, plugin = {"json:target/reports/CucumberReport.json"},

@@ -154,7 +154,8 @@ public class TrelloApiSteps {
 	@Entao("^apago o quadro criado$")
 	public void apago_o_quadro_criado() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		String url = "https://api.trello.com/1/boards/"+this.dashboard+"/token="+token+"&key="+key;
+		String url = "https://api.trello.com/1/boards/"+this.dashboard+"/?token="+token+"&key="+key;
+		System.out.println("delete: "+url);
 	    this.getResponseDelete(url);
 	}
 }
