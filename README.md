@@ -11,6 +11,7 @@ Ter Chrome versao 74 ou firefox instalado.
 
 Tecnologias utilizadas:
 Cucumber
+Selenium
 Java
 JayWay
 RestAssured
