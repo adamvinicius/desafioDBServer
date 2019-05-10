@@ -20,4 +20,6 @@ import org.junit.runner.RunWith;
         snippets = SnippetType.CAMELCASE,
         monochrome = true)
 public class RunnerTest {
+	
+	
    }

@@ -2,14 +2,15 @@
 
 Funcionalidade: compra automationpractice
 
-	Cenário: realizar compra com sucesso
+	Cenario: realizar compra com sucesso
 		Dado que estou no site "http://www.automationpractice.com"
 		Quando clico no produto "Faded Short Sleeve T-shirts"
 		E clico em add cart do produto
 		E clico em Proceed to checkout produto
 		Entao valido se o produto "Faded Short Sleeve T-shirts" se encontra no carrinho
 		Quando clico em Proceed to checkout
-		E digito "testeadam@gmail.com" no campo email
+		E digito email no campo email
+		
 		E clico em Create an account
 		Dado que estou na pagina Sign in
 	

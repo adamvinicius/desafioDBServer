@@ -3,116 +3,132 @@ package pages;
 import support.DriverQA;
 
 public class Compra {
-	DriverQA driver = new DriverQA();
+	String link_produto = "//*[@id=\"homefeatured\"]/li[1]/div/div[2]/h5/a";
+	String btn_cart = "//p[@id=\"add_to_cart\"]/button";
+	String link_title = "//a[@title = 'Proceed to checkout']";
+	String link_text_produto = "#product_1_1_0_0 > td.cart_description > p > a";
+	String h3_cabecalho = "//h3[@class='page-subheading']";
+	String li_rua = "//*[@id=\"address_delivery\"]/li[3]";
+	String li_endereco_entrega = "//*[@id=\"address_delivery\"]/li[4]";
+	String h1_head = "//h1[@class='page-heading']";
+	String link_pagamento = "//a[@title = 'Pay by bank wire']";
+	String btn_cart_pagamento = "//*[@id=\"cart_navigation\"]/button";
+	String p_confirmacao = "//*[@id=\"center_column\"]/div/p/strong";
+	String link_checkout = "//*[@id=\"center_column\"]/p[2]/a[1]";
+	String btn_endereco = "//button[@name = 'processAddress']";
+	String btn_checkout = "//button[@name = 'processCarrier']";
+	
+	
+	
 	public Compra(String endereco) {
-		driver.start(endereco);
+		DriverQA.start(endereco);
 	}
 	public void clickProduto(String produto) {
-		driver.click("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/h5/a", "xpath");
+		DriverQA.click(link_produto, "xpath");
 		
 	}
 	public void clickAddCart() {
 		//*[@id="add_to_cart"]/button/span
-		driver.waitElement("//p[@id=\"add_to_cart\"]/button", "xpath");
-		driver.click("//p[@id=\"add_to_cart\"]/button", "xpath");
+		DriverQA.waitElement(btn_cart, "xpath");
+		DriverQA.click(btn_cart, "xpath");
 		
 	}
 	public void clickCheckout() {
-		driver.waitElement("//a[@title = 'Proceed to checkout']", "xpath");
-		driver.click("//a[@title = 'Proceed to checkout']", "xpath");
+		DriverQA.waitElement(link_title, "xpath");
+		DriverQA.click(link_title, "xpath");
 		
 	}
 	public String getProduto() {
-		driver.waitElement("#product_1_1_0_0 > td.cart_description > p > a","css");
-		return driver.getText("#product_1_1_0_0 > td.cart_description > p > a","css");
+		DriverQA.waitElement(link_text_produto,"css");
+		return DriverQA.getText(link_text_produto,"css");
 	}
 	public void setEmailCreate(String email) {
-		driver.waitElement("email_create", "id");
-		driver.sendKeys(email, "email_create", "id");
+		DriverQA.waitElement("email_create", "id");
+		DriverQA.sendKeys(email, "email_create", "id");
 		
 	}
 	public void clickCreateAccount() {
-		driver.click("SubmitCreate", "id");
+		DriverQA.click("SubmitCreate", "id");
 	}
 	public String getTitulo() {
-		driver.waitElement("//h3[@class='page-subheading']", "xpath");
-		return driver.getText("//h3[@class='page-subheading']", "xpath");
+		DriverQA.waitElement(h3_cabecalho, "xpath");
+		return DriverQA.getText(h3_cabecalho, "xpath");
 	}
 	public void setFirstName(String nome) {
-		driver.waitElement("customer_firstname", "id");
-		driver.sendKeys(nome, "customer_firstname", "id");
+		DriverQA.waitElement("customer_firstname", "id");
+		DriverQA.sendKeys(nome, "customer_firstname", "id");
 		
 	}
 	public void setLastName(String sobrenome) {
-		driver.sendKeys(sobrenome, "customer_lastname", "id");
+		DriverQA.sendKeys(sobrenome, "customer_lastname", "id");
 		
 	}
 	public void setSenha(String senha) {
-		driver.sendKeys(senha, "passwd", "id");
+		DriverQA.sendKeys(senha, "passwd", "id");
 		
 	}
 	public void setRua(String rua) {
-		driver.sendKeys(rua, "address1", "id");
+		DriverQA.sendKeys(rua, "address1", "id");
 		
 	}
 	public void setCidade(String cidade) {
-		driver.sendKeys(cidade, "city", "id");
+		DriverQA.sendKeys(cidade, "city", "id");
 		
 	}
 	public void selecionaEstado(String estado) {
-		driver.selectText(estado, "id_state", "id");
+		DriverQA.selectText(estado, "id_state", "id");
 		
 	}
 	public void setZipoCode(String cep) {
-		driver.sendKeys(cep, "postcode", "id");
+		DriverQA.sendKeys(cep, "postcode", "id");
 		
 	}
 	public void setTelefone(String telefone) {
-		driver.sendKeys(telefone, "phone_mobile", "id");
+		DriverQA.sendKeys(telefone, "phone_mobile", "id");
 		
 	}
 	public void clickRegister() {
-		driver.click("submitAccount", "id");
+		DriverQA.click("submitAccount", "id");
 		
 	}
 	public String getRua() {
-		driver.waitElement("//*[@id=\"address_delivery\"]/li[3]", "xpath");
-		return driver.getText("//*[@id=\"address_delivery\"]/li[3]", "xpath");
+		DriverQA.waitElement(li_rua, "xpath");
+		return DriverQA.getText(li_rua, "xpath");
 	}
 	public Object getCidade() {
-		return driver.getText("//*[@id=\"address_delivery\"]/li[4]", "xpath");
+		return DriverQA.getText(li_endereco_entrega, "xpath");
 	}
 	public String getTituloShipping() {
-		driver.waitElement("//h1[@class='page-heading']", "xpath");
-		return driver.getText("//h1[@class='page-heading']", "xpath");
+		DriverQA.waitElement(h1_head, "xpath");
+		return DriverQA.getText(h1_head, "xpath");
 	}
 	public void clickAceitoTermos() {
-		driver.click("cgv", "id");
+		DriverQA.click("cgv", "id");
 		
 	}
 	public String getTotal() {
-		driver.waitElement("total_price", "id");
-		return driver.getText("total_price", "id");
+		DriverQA.waitElement("total_price", "id");
+		return DriverQA.getText("total_price", "id");
 	}
 	public void clickPayByBank() {
-		driver.click("//a[@title = 'Pay by bank wire']", "xpath");
+		DriverQA.click(link_pagamento, "xpath");
 	}
 	public void clickConfirmo() {
-		driver.waitElement("//*[@id=\"cart_navigation\"]/button", "xpath");
-		driver.click("//*[@id=\"cart_navigation\"]/button", "xpath");
+		DriverQA.waitElement(btn_cart_pagamento, "xpath");
+		DriverQA.click(btn_cart_pagamento, "xpath");
 	}
 	public String getConfirmation() {
-		return driver.getText("//*[@id=\"center_column\"]/div/p/strong", "xpath");
+		return DriverQA.getText(p_confirmacao, "xpath");
 	}
 	public void clickProcedCheckout() {
-		driver.click("//*[@id=\"center_column\"]/p[2]/a[1]", "xpath");
+		DriverQA.click(link_checkout, "xpath");
 		
 	}
 	public void clickCheckoutEndereco() {
-		driver.click("//button[@name = 'processAddress']", "xpath");
+		DriverQA.click(btn_endereco, "xpath");
 	}
 	public void clickCheckoutShipping() {
-		driver.click("//button[@name = 'processCarrier']", "xpath");
+		DriverQA.click(btn_checkout, "xpath");
 	}
 	
 	

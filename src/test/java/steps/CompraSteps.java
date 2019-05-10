@@ -1,13 +1,15 @@
 package steps;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 
-import cucumber.api.PendingException;
+
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 import pages.Compra;
+import support.DriverQA;
 
 public class CompraSteps {
 	Compra compra;
@@ -16,30 +18,38 @@ public class CompraSteps {
 	public void que_estou_no_site(String endereco) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra = new Compra(endereco);
+	    DriverQA.PrintScreen("1.AcessoSistema");
 	}
 
 	@Quando("^clico no produto \"([^\"]*)\"$")
 	public void clicoNoProduto(String produto) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.clickProduto(produto);
+	    DriverQA.PrintScreen("2.PaginaProduto");
 	}
 	
 	@Quando("^clico em add cart do produto$")
 	public void clicoEmAddCartDoProduto() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.clickAddCart();
+	    Thread.currentThread();
+	    Thread.sleep(4000);
+	    DriverQA.PrintScreen("3.AdicionaCart");
 	}
 
 	@Quando("^clico em Proceed to checkout$")
 	public void clicoEmProceedToCheckout() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.clickProcedCheckout();
+	    DriverQA.PrintScreen("4.Checkout");
+	    
 	}
 	
 	@Quando("^clico em Proceed to checkout produto$")
 	public void clicoEmProceedToCheckoutProduto() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.clickCheckout();
+	    
 	}
 	
 	@Quando("^clico em Proceed to checkout endereco$")
@@ -58,17 +68,21 @@ public class CompraSteps {
 	public void validoSeOProdutoSeEncontraNoCarrinho(String produto) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    Assert.assertEquals(produto, compra.getProduto());
+	    DriverQA.PrintScreen("5.Carrinho");
 	}
 
-	@Quando("^digito \"([^\"]*)\" no campo email$")
-	public void digitoNoCampoEmail(String email) throws Throwable {
+	@Quando("^digito email no campo email$")
+	public void digitoNoCampoEmail() throws Throwable {
+		String email = RandomStringUtils.randomAlphanumeric(20)+"@gmail.com";
 	    compra.setEmailCreate(email);
+	    DriverQA.PrintScreen("6.DigitoEmail");
 	}
 
 	@Quando("^clico em Create an account$")
 	public void clicoEmCreateAnAccount() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.clickCreateAccount();
+	    
 	}
 
 	@Dado("^que estou na pagina Sign in$")
@@ -124,12 +138,7 @@ public class CompraSteps {
 	public void digitoNoCampoMobilePhone(String telefone) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    compra.setTelefone(telefone);
-	}
-
-	@Quando("^digito \"([^\"]*)\" no campo addres allias$")
-	public void digitoNoCampoAddresAllias(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    DriverQA.PrintScreen("2.DadosCadastro");
 	}
 
 	@Quando("^clico em Register$")
@@ -154,6 +163,7 @@ public class CompraSteps {
 	public void validoACidadeComOTexto(String cidade) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    Assert.assertEquals(cidade, compra.getCidade());
+	    DriverQA.PrintScreen("7.DadosCadastrados");
 	}
 
 	@Dado("^que estou na pagina shipping$")
@@ -190,6 +200,7 @@ public class CompraSteps {
 	public void validoSeACompraFoiFinalizada() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    Assert.assertEquals("Your order on My Store is complete.", compra.getConfirmation());
+	    DriverQA.PrintScreen("8.ValidoCompra");
 	}
 
 }
