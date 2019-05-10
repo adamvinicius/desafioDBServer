@@ -1,7 +1,7 @@
 #language: pt
 
 Funcionalidade: compra automationpractice
-
+	@testeSelenium
 	Cenario: realizar compra com sucesso
 		Dado que estou no site "http://www.automationpractice.com"
 		Quando clico no produto "Faded Short Sleeve T-shirts"
