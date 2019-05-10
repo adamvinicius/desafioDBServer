@@ -2,6 +2,7 @@ package support;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,12 +38,19 @@ public class DriverQA {
 	}
 
 	public static void startFirefox(String endereco) {
-		optionsFirefox = new FirefoxOptions();
-		optionsFirefox.addArguments("--headless");
-		optionsFirefox.addArguments("window-size=1200x800");
 		System.setProperty("webdriver.chrome.driver", "geckodriver.exe");
-		driver = new FirefoxDriver(optionsFirefox);
-
+		FirefoxBinary firefoxBinary = new FirefoxBinary();
+	    firefoxBinary.addCommandLineOptions("--headless");
+	    firefoxBinary.addCommandLineOptions("window-size=1200x800");
+	    	
+		// Creating FirefoxOptions to set profile
+		FirefoxOptions option = new FirefoxOptions();
+				
+		firefoxBinary.setTimeout(TimeUnit.SECONDS.toMillis(120));
+		option.setBinary(firefoxBinary);
+		
+		driver = new FirefoxDriver(option);
+		
 		driver.get(endereco);
 		driver.manage().window().maximize();
 	}
